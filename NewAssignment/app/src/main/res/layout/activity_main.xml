@@ -11,6 +11,7 @@
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
+        android:focusableInTouchMode="false"
         android:layout_width="183dp"
         android:layout_height="33dp"
         android:layout_marginTop="16dp"
@@ -35,10 +36,12 @@
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal3"
+    <TextView
+        android:id="@+id/tipAmount"
         android:layout_width="174dp"
         android:layout_height="38dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:background="@color/editText_pale_grey"
         android:ems="10"
         android:inputType="numberDecimal"
@@ -53,89 +56,105 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="20dp"
         android:text="Bill Total with Tax:"
         android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/billTotalWithAmount"
         android:layout_width="178dp"
         android:layout_height="39dp"
+        android:layout_marginStart="11dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
         android:background="@color/editText_pale_green"
         android:ems="9"
         android:inputType="numberDecimal"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="75dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:buttonTint="@color/purple_500"
-        android:text="15%"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/radioButton"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="75dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:buttonTint="@color/purple_500"
-        android:text="18%"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/radioButton2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Tip Percent:"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tipPercentageButton"
         app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="75dp"
-        android:layout_height="55dp"
-        android:buttonTint="@color/purple_500"
-        android:text="20%"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
-        app:layout_constraintStart_toEndOf="@+id/radioButton3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="75dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="40dp"
-        android:layout_weight="1"
-        android:buttonTint="@color/purple_500"
-        android:ellipsize="marquee"
-        android:text="12%"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <RadioGroup
+        android:id="@+id/tipPercentageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginBottom="29dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumberDecimal3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/radioTwelve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12%"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="49dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+        <RadioButton
+            android:id="@+id/radioFifteen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15%"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="119dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+
+
+        <RadioButton
+            android:id="@+id/radioEighteen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18%"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="106dp" />
+
+
+        <RadioButton
+            android:id="@+id/radioTwenty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20%"
+            android:textSize="20sp" />
+
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView3"
@@ -163,19 +182,22 @@
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal2"
+    <TextView
+        android:id="@+id/totalAmtWithTip"
         android:layout_width="176dp"
         android:layout_height="41dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="51dp"
         android:background="@color/editText_pale_grey"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNumberDecimal3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimal3"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/divider"
@@ -207,35 +229,42 @@
         android:layout_height="35dp"
         android:layout_marginStart="176dp"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/editText_pale_green"
         android:ems="10"
         android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/totalAmtPerPerson"
         app:layout_constraintEnd_toEndOf="@+id/divider"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/goButton"
         android:layout_width="85dp"
         android:layout_height="50dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="27dp"
+        android:layout_marginBottom="17dp"
         android:text="GO"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/totalAmtPerPerson"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <EditText
-        android:id="@+id/editTextNumberDecimal4"
+    <TextView
+        android:id="@+id/totalAmtPerPerson"
         android:layout_width="198dp"
         android:layout_height="42dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="48dp"
         android:background="@color/editText_pale_grey"
         android:ems="10"
         android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
@@ -245,9 +274,12 @@
         android:id="@+id/button2"
         android:layout_width="100dp"
         android:layout_height="55dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="48dp"
         android:text="CLEAR"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextNumberDecimal4"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="@+id/textView7"
