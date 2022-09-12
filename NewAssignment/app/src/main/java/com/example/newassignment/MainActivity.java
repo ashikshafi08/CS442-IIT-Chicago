@@ -1,8 +1,10 @@
 package com.example.newassignment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.nfc.Tag;
+import android.view.View;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,7 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private RadioButton radioTipButton;
     private TextView tipAmtId;
     private TextView totalWithTipId;
+    private TextView totalAmtPerPersonId;
     private Button goButtonId;
+
+    // Variables
+    public double tipAmt;
+
+
+
 
     public int giveInteger(String tipPercentString){
 
@@ -37,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             this.radioGroupButton.getChildAt(button).setEnabled(state);
         }
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,39 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                if(charSequence.toString().trim().matches("")){
-//                    Log.d(TAG, "Its Empty");
-//
-//                    // Looping and disabling all child
-//                    radioButtonToggler(false , radioGroupButton);
-//                }else{
-//                    radioButtonToggler(true , radioGroupButton);
-//
-//                    // Getting the RadioID from the RadioGroup
-//                    int radioId = radioGroupButton.getCheckedRadioButtonId();
-//                    radioTipButton = findViewById(radioId);
-//
-//
-//                    // Getting the percentage in String
-//                    String tipPercent = radioTipButton.getText().toString();
-//                    int tipPercentInt  = giveInteger(tipPercent);
-//                    Log.d(TAG , "Percentage: " + String.valueOf(tipPercentInt));
-//
-//                    billAmtWithTax = findViewById(R.id.billTotalWithAmount);
-//                    String billAmtWithTaxString =  billAmtWithTax.getText().toString();
-//                    double tipPercentDouble = Double.parseDouble(billAmtWithTaxString);
-//                    Log.d(TAG ,"Amount is: " + String.valueOf(tipPercentDouble));
-                    // double billAmt = Double.parseDouble(charSequence.toString());
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-                    // double tipAmtpercent = (billAmt * 100) / tipPercentDouble;
-
-                    // TextView tipAmt = findViewById(R.id.tipAmount);
-                    // tipAmt.setText(String.valueOf(billAmt));
-
-
-
-                }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -105,12 +84,26 @@ public class MainActivity extends AppCompatActivity {
                         double billAmtwithTax = Double.parseDouble(billAmt);
                         int tipPercentInt = giveInteger(tipPercentString);
 
-                        double tipAmt = (billAmtwithTax / 100) * tipPercentInt;
+                        tipAmt = (billAmtwithTax / 100) * tipPercentInt;
                         tipAmtId.setText(String.valueOf(tipAmt));
 
                         // Calculating the total with the Tip Amount
                         double totalBillWithTip = billAmtwithTax + tipAmt;
                         totalWithTipId.setText(String.valueOf(totalBillWithTip));
+                        goButtonId = findViewById(R.id.goButton);
+
+                        goButtonId.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                EditText numPeopleInt = findViewById(R.id.editTextNumPeople);
+                                int numberOfPeople = Integer.parseInt(numPeopleInt.getText().toString());
+
+                                // Divide by the amount
+                                double totalPerPerson =  totalBillWithTip / numberOfPeople;
+                                totalAmtPerPersonId = findViewById(R.id.totalAmtPerPerson);
+                                totalAmtPerPersonId.setText(String.valueOf(totalPerPerson));
+                            }
+                        });
 
 //                        goButtonId = findViewById(R.id.goButton);
 
@@ -125,7 +118,31 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putString("BILLAMTWITHTAX" , billAmtWithTax.getText().toString());
+        outState.putDouble("TIPAMOUNT" , tipAmt);
+
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState){
+
+        // Calling the super here first
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // The variables we wanna store will come under here
+    }
+
 }
+
+
+
+
 
 
 //        radioGroupButton = findViewById(R.id.tipPercentageButton);

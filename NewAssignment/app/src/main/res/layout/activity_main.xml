@@ -224,7 +224,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/editTextNumPeople"
         android:layout_width="97dp"
         android:layout_height="35dp"
         android:layout_marginStart="176dp"
@@ -232,6 +232,8 @@
         android:layout_marginBottom="16dp"
         android:background="@color/editText_pale_green"
         android:ems="10"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/totalAmtPerPerson"
         app:layout_constraintEnd_toEndOf="@+id/divider"
@@ -252,7 +254,7 @@
         app:layout_constraintBottom_toTopOf="@+id/totalAmtPerPerson"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber2"
+        app:layout_constraintStart_toEndOf="@+id/editTextNumPeople"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
@@ -263,12 +265,14 @@
         android:layout_marginBottom="48dp"
         android:background="@color/editText_pale_grey"
         android:ems="10"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNumber2"
+        app:layout_constraintEnd_toEndOf="@+id/editTextNumPeople"
         app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="@+id/editTextNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+        app:layout_constraintStart_toStartOf="@+id/editTextNumPeople"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumPeople" />
 
     <Button
         android:id="@+id/button2"
