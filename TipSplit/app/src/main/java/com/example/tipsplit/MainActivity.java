@@ -1,11 +1,14 @@
 package com.example.tipsplit;
 
+import java.text.DecimalFormat;
+import java.math.RoundingMode;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Configuration;
+
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.EditText;
@@ -15,12 +18,15 @@ import android.text.TextWatcher;
 import android.text.Editable;
 import android.view.View;
 
+
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
     private RadioGroup radioGroupButton;
     private RadioButton radioTipButton;
     private Button goButtonId;
+    private Button clearButtonId;
 
     private EditText billAmtWithTax;
     private EditText numPeopleId;
@@ -37,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private double totalPerPerson;
     private int tipPercentInt;
     private int numPeopleInt;
+
+    // Defining the Decimal Format
+    private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
+
 
 
 
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 // Getting the text of the percentage
                 radioTipButton = findViewById(iD);
                 String  tipPercentString = radioTipButton.getText().toString();
+                radioTipButton.setActivated(false);
                 tipPercentInt = giveIntegerPercentage(tipPercentString);
 
                 // Log.d(TAG , String.valueOf(tipPercentInt));
@@ -74,40 +86,60 @@ public class MainActivity extends AppCompatActivity {
 
                 // Calculate the Tip Amount
                 tipAmountVar = (billAmtWithTaxVar / 100) * tipPercentInt;
-                tipAmtId.setText(String.valueOf(tipAmountVar));
+                tipAmtId.setText(String.format("%.2f" , tipAmountVar));
+
 
                 // Calculate the bill Total with the Tip Amount
                 totalBillWithTipVar = billAmtWithTaxVar + tipAmountVar;
-                totalWithTipId.setText(String.valueOf(totalBillWithTipVar));
+                totalWithTipId.setText(String.format("%.2f", totalBillWithTipVar));
+
 
             }
         });
 
     }
 
-    public void userClicksGo(Button buttonId){
+    protected void userClicksGo(Button buttonId){
         buttonId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numPeopleId = findViewById(R.id.editTextNumPeople);
                 numPeopleInt = Integer.parseInt(numPeopleId.getText().toString());
 
                 // Divide by the amount
                 totalPerPerson = totalBillWithTipVar / numPeopleInt;
-                totalAmtPerPersonId = findViewById(R.id.totalPerPerson);
-                totalAmtPerPersonId.setText(String.valueOf(totalPerPerson));
+                totalAmtPerPersonId.setText(String.format("%.2f" , totalPerPerson));
 
             }
         });
     }
 
+    protected void clearEverythingButton(Button clearButtonId){
+        clearButtonId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                billAmtWithTax.setText("");
+                tipAmtId.setText("");
+                totalWithTipId.setText("");
+                numPeopleId.setText("");
+                totalAmtPerPersonId.setText("");
 
+                radioButtonToggler(false , radioGroupButton);
+            }
+        });
+    }
 
+// TODO: 1. Finish up the Formating of the Double variable and rounding up of the values
+// TODO: 2. Configure the Clear button for the whole app, by clicking so the entire values stored should be gone.
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (savedInstanceState == null)
+            Toast.makeText(this, "savedInstanceState is NULL", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "savedInstanceState is NOT NULL", Toast.LENGTH_LONG).show();
 
 
         // Defining the views and getting their IDs
@@ -115,7 +147,11 @@ public class MainActivity extends AppCompatActivity {
         billAmtWithTax = findViewById(R.id.billTotalWithAmount);
         tipAmtId = findViewById(R.id.tipAmount);
         totalWithTipId = findViewById(R.id.totalAmtWithTip);
+        numPeopleId = findViewById(R.id.editTextNumPeople);
         goButtonId = findViewById(R.id.goButton);
+        clearButtonId = findViewById(R.id.clearButton);
+        totalAmtPerPersonId = findViewById(R.id.totalPerPerson);
+
 
 
 
@@ -135,25 +171,42 @@ public class MainActivity extends AppCompatActivity {
                 String billAmtTaxString = billAmtWithTax.getText().toString();
 
                 if (billAmtTaxString.trim().matches("")) {
-                    radioButtonToggler(false , radioGroupButton);
-                    tipAmtId.setText("");
-                    totalWithTipId.setText("");
+                    if(radioGroupButton.getCheckedRadioButtonId() !=-1){
+                        radioTipButton = findViewById(radioGroupButton.getCheckedRadioButtonId());
+                        radioTipButton.setChecked(false);
+                        radioButtonToggler(false , radioGroupButton);
+                        tipAmtId.setText("");
+                        totalWithTipId.setText("");
+
+
+                    }else{
+                        radioButtonToggler(false , radioGroupButton);
+                        tipAmtId.setText("");
+                        totalWithTipId.setText("");
+                    }
+
+
 
 
                 } else{
 
+
                     if(radioGroupButton.getCheckedRadioButtonId() == -1){
+                        // radioButtonToggler(false , radioGroupButton);
                         radioButtonToggler(true , radioGroupButton);
                         radioButtonGroupFunction(radioGroupButton , billAmtTaxString);
                         userClicksGo(goButtonId);
+
                     }
                     else{
 
                         radioTipButton = findViewById(radioGroupButton.getCheckedRadioButtonId());
-                        radioTipButton.setChecked(false);
                         radioButtonToggler(true , radioGroupButton);
                         radioButtonGroupFunction(radioGroupButton , billAmtTaxString);
+                        //radioTipButton.setChecked(false);
+                        //radioTipButton.setActivated(false);
                         userClicksGo(goButtonId);
+
                     }
 
 
@@ -161,9 +214,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        clearEverythingButton(clearButtonId);
+
+
 
 
 
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("TotalPerPersonString" , String.format("%.2f" , totalPerPerson));
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        totalAmtPerPersonId.setText(savedInstanceState.getString("TotalPerPersonString"));
+
+
+    }
 }
