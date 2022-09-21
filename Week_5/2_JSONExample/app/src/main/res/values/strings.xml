@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">JSON File Example</string>
+
+
+    <string name="file_name">Product.json</string>
+    <string name="encoding">UTF-8</string>
+    <string name="no_file">No JSON Product File Present</string>
+    <string name="saved">Product Saved!</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="enter_product_description">Enter Product Description</string>
+    <string name="enter_product_weight">Enter Product Weight</string>
+    <string name="enter_product_price">Enter Product Price</string>
+</resources>

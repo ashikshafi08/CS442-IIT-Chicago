@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Options Menu Examples</string>
+    <string name="a">A is Active</string>
+    <string name="b">B is Active</string>
+    <string name="c">C is Active</string>
+    <string name="d">D is Active</string>
+    <string name="do_a">Do A</string>
+    <string name="do_b">Do B</string>
+    <string name="do_c">Do C</string>
+    <string name="do_d">Do D</string>
+</resources>

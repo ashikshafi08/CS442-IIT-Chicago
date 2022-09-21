@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RecyclerView Example</string>
+    <string name="remove_from_top">Remove from Top</string>
+    <string name="remove_from_end">Remove from end</string>
+    <string name="add_at_top">Add at Top</string>
+    <string name="add_at_end">Add at End</string>
+    <string name="date_time">Date Time</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.christopherhield.notes.MainActivity">
+
+    <EditText
+        android:id="@+id/prodWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#eeeeff"
+        android:ems="10"
+        android:hint="@string/enter_product_weight"
+        android:inputType="numberDecimal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/prodDesc"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/prodDesc"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/prodName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#eeeeff"
+        android:ems="10"
+        android:hint="@string/enter_product_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingBottom="4dp"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/prodDesc"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:background="#eeeeff"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="top|start"
+        android:hint="@string/enter_product_description"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:lineSpacingExtra="6sp"
+        android:longClickable="true"
+        android:scrollIndicators="right|end"
+        android:scrollbars="vertical"
+        android:textIsSelectable="true"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/prodName"
+        app:layout_constraintStart_toStartOf="@+id/prodName"
+        app:layout_constraintTop_toBottomOf="@+id/prodName" />
+
+    <EditText
+        android:id="@+id/prodPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#eeeeff"
+        android:ems="10"
+        android:hint="@string/enter_product_price"
+        android:inputType="numberDecimal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/prodDesc"
+        app:layout_constraintTop_toBottomOf="@+id/prodDesc"
+        android:importantForAutofill="no" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <EditText
+        android:id="@+id/prodManu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#eeeeff"
+        android:ems="10"
+        android:hint="Enter Product Manufacturer"
+        android:inputType="textPersonName"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/prodWeight"
+        app:layout_constraintStart_toStartOf="@+id/prodPrice"
+        app:layout_constraintTop_toBottomOf="@+id/prodPrice"
+        tools:ignore="HardcodedText"
+        android:importantForAutofill="no" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
