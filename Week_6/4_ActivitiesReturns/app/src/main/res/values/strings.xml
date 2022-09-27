@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Activities</string>
+    <string name="activity_b">Activity B</string>
+    <string name="this_activity_can_return_data">This activity can return data. Type something below and then click Done or press the Back button.</string>
+    <string name="done">Done</string>
+    <string name="go_to_activity_a">Go to Activity A</string>
+    <string name="go_to_activity_b">Go to Activity B</string>
+    <string name="main_activity">Main Activity</string>
+    <string name="this_is_an_activity_that_has_no_data">This is an activity that has no data to return. Press the Back button to go back.</string>
+</resources>

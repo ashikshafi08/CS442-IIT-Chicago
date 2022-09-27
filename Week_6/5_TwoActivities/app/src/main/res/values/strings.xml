@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TwoActivities</string>
+    <string name="i_know_you">Hey - I know you!</string>
+    <string name="this_is_activity_one">This is Activity One</string>
+    <string name="hey_i_do_not_know_you">Hey - I do not know you!</string>
+    <string name="introduce_yourself">Introduce Yourself</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="done">Done</string>
+    <string name="tell_me_how_you_are">Tell me how you are!</string>
+</resources>
