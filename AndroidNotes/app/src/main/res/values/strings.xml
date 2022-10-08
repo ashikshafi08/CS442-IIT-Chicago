@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Android Notes</string>
+    <string name="about">About</string>
+    <string name="edit">Edit</string>
+    <string name="file_name">NotesList.json</string>
+    <string name="no_file">No File found</string>
+    <string name="saved">Note saved</string>
+    <string name="menu_save">menu_save</string>
+    <string name="title">Title</string>
+    <string name="note_content">Note content</string>
+    <string name="android_notes">Android Notes</string>
+    <string name="_2022_sonal_gaikwad">© 2022, Sonal Gaikwad</string>
+    <string name="version_1_0">Version 1.0</string>
+</resources>
