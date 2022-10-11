@@ -15,15 +15,23 @@ public class NotesC implements Serializable {
     private String noteTitle;
     private String noteText;
     private String dateTime;
+    private static int ctr;
 
     public NotesC(String title, String content, String dateTime) {
         this.noteTitle = title;
         this.noteText = content;
         this.dateTime = dateTime;
 
+
     }
 
-    public String getNoteTitle() {
+    public NotesC() {
+        this.noteTitle = "";
+        this.noteText = "";
+        this.dateTime = "";
+    }
+
+        public String getNoteTitle() {
             return noteTitle;
         }
 
