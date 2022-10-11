@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Countries of the World</string>
+    <string name="title">Countries of the World</string>
+    <string name="capTitle">Capital</string>
+    <string name="popTitle">Population</string>
+    <string name="areaTitle">Area</string>
+    <string name="citTitle">Citizenship</string>
+    <string name="callingTitle">Calling Code(s)</string>
+    <string name="borderTitle">Borders</string>
+    <string name="capCityTitle">Capital City</string>
+</resources>

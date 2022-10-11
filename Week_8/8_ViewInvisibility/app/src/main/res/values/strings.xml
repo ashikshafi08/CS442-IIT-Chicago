@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ViewVisibility</string>
+    <string name="a_sample_textview">A Sample TextView</string>
+    <string name="android">Android</string>
+    <string name="text_invisible">Text Invisible</string>
+    <string name="image_invisible">Image Invisible</string>
+    <string name="text_gone">Text Gone</string>
+    <string name="image_gone">Image Gone</string>
+</resources>

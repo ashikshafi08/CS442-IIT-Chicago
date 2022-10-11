@@ -1,0 +1,75 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.christopher.weather"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="25"
+8-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:5:5-66
+11-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:7:5-22:19
+14        android:allowBackup="true"
+14-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.8.0] C:\Users\chris\.gradle\caches\transforms-3\28a1708219c3158e49b329d141e5cfff\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:extractNativeLibs="false"
+18        android:icon="@mipmap/ic_launcher"
+18-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:9:9-43
+19        android:label="@string/app_name"
+19-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:10:9-41
+20        android:supportsRtl="true"
+20-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:11:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme" >
+22-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:12:9-40
+23        <activity
+23-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:14:9-21:20
+24            android:name="com.example.christopher.weather.MainActivity"
+24-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:14:19-78
+25            android:exported="true" >
+25-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:15:13-36
+26            <intent-filter>
+26-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:16:13-20:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:17:17-69
+27-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:17:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:19:17-77
+29-->C:\Users\chris\Desktop\IIT\CS442_Fall_22_IIT\W7\3_VolleyWeather\app\src\main\AndroidManifest.xml:19:27-74
+30            </intent-filter>
+31        </activity>
+32
+33        <provider
+33-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+34            android:name="androidx.startup.InitializationProvider"
+34-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+35            android:authorities="com.example.christopher.weather.androidx-startup"
+35-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+36            android:exported="false" >
+36-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+37            <meta-data
+37-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+38                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+38-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+39                android:value="androidx.startup" />
+39-->[androidx.emoji2:emoji2:1.2.0] C:\Users\chris\.gradle\caches\transforms-3\7b79f7e4a058224274d9b5ea417be867\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+40            <meta-data
+40-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chris\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+41                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+41-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chris\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+42                android:value="androidx.startup" />
+42-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\chris\.gradle\caches\transforms-3\e49fb580d7eda2494a8100e094041989\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+43        </provider>
+44    </application>
+45
+46</manifest>

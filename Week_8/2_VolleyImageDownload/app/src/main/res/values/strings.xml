@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VolleyImageDownload</string>
+    <string name="sample_image">Sample Image</string>
+    <string name="reload">Reload</string>
+</resources>

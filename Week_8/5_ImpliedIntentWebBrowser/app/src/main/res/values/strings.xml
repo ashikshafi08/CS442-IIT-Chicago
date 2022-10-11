@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ImpliedIntentWebBrowser</string>
+    <string name="go_to_cnn">Go to CNN</string>
+    <string name="go_to_android">Go to Android</string>
+    <string name="go_to_google">Go to Google</string>
+    <string name="go_to_trib">Go to Tribune</string>
+    <string name="do_stock">Stock Symbol:</string>
+    <string name="enter_a_symbol">Enter a Symbol (i.e., WMT)</string>
+</resources>
