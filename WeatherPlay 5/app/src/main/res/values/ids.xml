@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtTemperature" type="id" />
+    <item name="txtDay" type="id" />
+    <item name="txtTime" type="id" />
+    <item name="imgWeather" type="id" />
+</resources>
