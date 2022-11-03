@@ -1,5 +1,6 @@
 package com.example.weatherplay;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ public class DayWeatherAdapter extends RecyclerView.Adapter<DayWeatherViewHolder
 
     private final List<DayWeather> dayWeatherList;
     private DayWeatherActivity dayWeatherActivity;
+    private MainActivity mainActivity;
 
     public DayWeatherAdapter(List<DayWeather> dayWeatherList, DayWeatherActivity dayWeatherActivity){
             this.dayWeatherList = dayWeatherList;
@@ -34,17 +36,25 @@ public class DayWeatherAdapter extends RecyclerView.Adapter<DayWeatherViewHolder
 
         DayWeather dayWeather = dayWeatherList.get(position);
 
-        String txtHighLow = dayWeather.getTempMax().toString() + "/" + dayWeather.getTempMin().toString();
-
-        holder.txtHighLowId.setText(txtHighLow);
-        holder.txtUvindexId.setText(dayWeather.getUvindex());
+        holder.txtHighLowId.setText(dayWeather.getTxtHighLow());
+        holder.txtDateId.setText(dayWeather.getDatetimeEpoch());
+        holder.txtUvindexId.setText(String.format("UV Index: %s", dayWeather.getUvindex()));
         holder.txtDescriptionId.setText(dayWeather.getDescription());
-        holder.txtperciprobId.setText(dayWeather.getPrecipprob());
+        holder.txtperciprobId.setText("(" + dayWeather.getPrecipprob() + "%" + "percip."+  ")");
+
         // holder.txtDateId
+
         holder.txtMorningId.setText(dayWeather.getMorningTemp());
         holder.txtAfternoonId.setText(dayWeather.getNoonTemp());
         holder.txtEveningId.setText(dayWeather.getEveTemp());
         holder.txtNightId.setText(dayWeather.getNightTemp());
+//
+        int iconID = returnIcon(dayWeather.getIcon());
+        if (iconID != 0) {
+            holder.imgWeatherIconId.setImageResource(iconID);
+        }
+
+
 
 
        // holder.firstView.setText(dayWeather.getPrecipprob());
@@ -56,5 +66,18 @@ public class DayWeatherAdapter extends RecyclerView.Adapter<DayWeatherViewHolder
     @Override
     public int getItemCount() {
         return dayWeatherList.size();
+    }
+
+    private int returnIcon(String iconName) {
+        String icon = iconName;
+        icon = icon.replace("-", "_"); // Replace all dashes with underscores
+        int iconID = dayWeatherActivity.getResources().getIdentifier(icon, "drawable", dayWeatherActivity.getPackageName());
+        if (iconID == 0) {
+            String TAG = "DayWeatherAdapter";
+            Log.d(TAG, "Icon Error: CANNOT FIND ICON " + icon);
+            return 0;
+        }
+
+        return iconID;
     }
 }

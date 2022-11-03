@@ -17,7 +17,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DayWeatherActivity extends AppCompatActivity {
 
@@ -54,10 +57,6 @@ public class DayWeatherActivity extends AppCompatActivity {
 
     public void doDownload(boolean degree , String city){
 
-
-
-        Toast.makeText(this, "The city is: " + city , Toast.LENGTH_SHORT);
-
         WeatherDownloader.DaydownloadWeather(this ,city , degree);
     }
 
@@ -84,6 +83,8 @@ public class DayWeatherActivity extends AppCompatActivity {
 
     public void updateData(Weather weather) {
 
+        boolean degree= getIntent().getBooleanExtra("degree" , true);
+
         if (weather == null) {
             Toast.makeText(this, "Please Enter a Valid City Name", Toast.LENGTH_SHORT).show();
             return;
@@ -97,7 +98,7 @@ public class DayWeatherActivity extends AppCompatActivity {
                 JSONObject dayJsonObject = weatherDayArrayList.get(i);
 
 
-                String dateTimeEpoch = dayJsonObject.getString("datetimeEpoch");
+
                 String description = dayJsonObject.getString("description");
                 String tempMax = dayJsonObject.getString("tempmax");
                 String tempMin = dayJsonObject.getString("tempmin");
@@ -105,18 +106,31 @@ public class DayWeatherActivity extends AppCompatActivity {
                 String uvIndex = dayJsonObject.getString("uvindex");
                 String icon = dayJsonObject.getString("icon");
 
+                // Converting DayTimeEpoch to Viewable string
+                long dateTimeLong = Long.parseLong(dayJsonObject.getString("datetimeEpoch"));
+                Date dateTime = new Date(dateTimeLong * 1000);
+                SimpleDateFormat dayDate = new SimpleDateFormat("EEEE MM/dd", Locale.getDefault());
+
+                String datetimeEpoch =  dayDate.format(dateTime);
+                Log.d(TAG , icon);
+
+                String txtHighLow = tempMax +(degree ? "°F" : "°C" ) + "/" + tempMin + (degree ? "°F" : "°C" );
+
                 // Temp for different day
-                String morningTemp = returnTemperature(dayJsonObject, 8);
-                String noonTemp = returnTemperature(dayJsonObject, 13);
-                String eveTemp = returnTemperature(dayJsonObject, 17);
-                String nightTemp = returnTemperature(dayJsonObject, 23);
+                String morningTemp = (String.format("%s° %s", returnTemperature(dayJsonObject, 8),(degree ? "F" : "C" )));
+                String noonTemp = (String.format("%s° %s", returnTemperature(dayJsonObject, 13),(degree ? "F" : "C" )));
+                String eveTemp = (String.format("%s° %s", returnTemperature(dayJsonObject, 17),(degree ? "F" : "C" )));
+                String nightTemp = (String.format("%s° %s", returnTemperature(dayJsonObject, 23),(degree ? "F" : "C" )));
 
 
 
 
 
 
-                dayWeatherArrayList.add(new DayWeather(tempMax, tempMin, description, dateTimeEpoch,
+
+
+
+                dayWeatherArrayList.add(new DayWeather(txtHighLow ,  description, datetimeEpoch,
                         precipprob, uvIndex, icon,
                         morningTemp, noonTemp, eveTemp, nightTemp));
 

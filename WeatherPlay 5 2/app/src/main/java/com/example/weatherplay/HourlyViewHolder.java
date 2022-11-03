@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class HourlyViewHolder extends RecyclerView.ViewHolder {
 
     TextView txtDayId,txtTimeid,txtTemperatureId,txtDescriptionId, txtIconId;
-    // ImageView imgWeather;
+    ImageView imageWeatherIconId;
     LinearLayout linearLayout;
 
     public HourlyViewHolder(@NonNull View itemView) {
@@ -22,6 +22,7 @@ public class HourlyViewHolder extends RecyclerView.ViewHolder {
         txtDescriptionId=itemView.findViewById(R.id.txtDescription);
         txtTimeid=itemView.findViewById(R.id.txtTime);
         txtIconId=itemView.findViewById(R.id.imgWeather);
+        imageWeatherIconId = itemView.findViewById(R.id.hourlyImageId);
 
 
 

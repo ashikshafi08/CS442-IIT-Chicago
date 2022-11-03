@@ -10,14 +10,14 @@
 
     <TextView
         android:id="@+id/dateTxt"
-        android:background="@color/purple_200"
         android:layout_width="410dp"
-        android:layout_height="26dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:background="@color/cardview_light_background"
         android:hint="Day date"
         android:padding="4dp"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/highLowTxt"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,10 +36,12 @@
     <TextView
         android:id="@+id/highLowTxt"
         android:layout_width="220dp"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:hint="High Low Tem"
         android:padding="4dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/descTxt"
         app:layout_constraintEnd_toEndOf="@+id/descTxt"
@@ -50,9 +52,11 @@
     <TextView
         android:id="@+id/descTxt"
         android:layout_width="248dp"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:hint="Description"
-
+        android:textColor="@color/white"
+        android:paddingLeft="6dp"
+        android:paddingBottom="5dp"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/precipProbTxt"
@@ -66,7 +70,10 @@
         android:layout_width="208dp"
         android:layout_height="25dp"
         android:hint="Precip Prob"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:paddingLeft="8dp"
+        android:textAlignment="gravity"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/uvIndexTxt"
         app:layout_constraintEnd_toEndOf="@+id/uvIndexTxt"
@@ -74,28 +81,33 @@
         app:layout_constraintTop_toBottomOf="@+id/descTxt" />
 
 
-    <TextView
-        android:layout_width="159dp"
-        android:layout_height="62dp"
+    <ImageView
+        android:id="@+id/dailyWeatherImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="1dp"
-        android:hint="Icon Text"
-        android:textStyle="bold"
+        android:contentDescription="Weather Image"
         app:layout_constraintBottom_toBottomOf="@+id/uvIndexTxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.608"
         app:layout_constraintStart_toEndOf="@+id/highLowTxt"
         app:layout_constraintTop_toBottomOf="@+id/dateTxt"
-        app:layout_constraintVertical_bias="0.032" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/uvIndexTxt"
         android:layout_width="208dp"
         android:layout_height="25dp"
+        android:layout_marginEnd="203dp"
         android:hint="Uv index"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:paddingLeft="8dp"
+        android:textAlignment="inherit"
+        android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/precipProbTxt" />
 
@@ -122,6 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -130,6 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:text="Morning"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -147,6 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -156,6 +171,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Afternoon"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -172,6 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -181,6 +198,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Evening"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -197,6 +215,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -205,6 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="@color/white"
                 android:text="Night"
                 android:textSize="16sp"
                 android:textStyle="bold" />

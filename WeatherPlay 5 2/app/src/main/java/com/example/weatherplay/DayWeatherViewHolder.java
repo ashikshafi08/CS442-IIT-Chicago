@@ -16,6 +16,7 @@ public class DayWeatherViewHolder extends RecyclerView.ViewHolder {
     public DayWeatherViewHolder(@NonNull View itemView) {
         super(itemView);
 
+        txtDateId = itemView.findViewById(R.id.dateTxt);
         txtHighLowId = itemView.findViewById(R.id.highLowTxt);
         txtUvindexId = itemView.findViewById(R.id.uvIndexTxt);
         txtDescriptionId = itemView.findViewById(R.id.descTxt);
@@ -24,6 +25,7 @@ public class DayWeatherViewHolder extends RecyclerView.ViewHolder {
         txtAfternoonId = itemView.findViewById(R.id.noonTempTxt);
         txtEveningId = itemView.findViewById(R.id.eveTempTxt);
         txtNightId = itemView.findViewById(R.id.nightTempTxt);
+        imgWeatherIconId = itemView.findViewById(R.id.dailyWeatherImg);
 
        //  txtNightId = itemView.findViewById(R.id.nightTempTxt);
 

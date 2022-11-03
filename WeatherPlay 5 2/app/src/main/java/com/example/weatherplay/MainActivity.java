@@ -3,13 +3,16 @@ package com.example.weatherplay;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -21,6 +24,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +37,11 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
     private static MainActivity mainActivity;
     public String city = "Chicago, IL";
     private static RecyclerView horizontalRecyclerView;
+    private SwipeRefreshLayout swiper;
+    private ConstraintLayout constraintLayout;
+    private LinearLayout linearInternet,linearNoInternet;
 
     private static final String weatherURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline";
     private static final String yourAPIKey = "E3NQPB6RJEB7VD9ZJE7YD7ECW";
@@ -66,9 +77,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home_main);
+
+        linearInternet  = findViewById(R.id.linearInternet);
+        linearNoInternet  = findViewById(R.id.linearNoInternet);
 
         horizontalRecyclerView = findViewById(R.id.horizontalRecyclerView);
+        swiper = findViewById(R.id.swiper);
+
+        getData();
+
+        swiper.setOnRefreshListener(this::doRefresh);
 
 //        activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult() ,
 //                this::handleActivity);
@@ -76,32 +95,70 @@ public class MainActivity extends AppCompatActivity {
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 //        horizontalRecyclerView.setAdapter(hourlyWeatherAdapter);
 //        horizontalRecyclerView.setLayoutManager(linearLayoutManager);
-         doDownload(degreeFarenheit , city);
+
+        // Log.d(TAG , "Icon" + String.valueOf(returnIcon("clear-day")));
+
+        if (!hasNetworkConnection()){
+            linearInternet.setVisibility(View.GONE);
+            linearNoInternet.setVisibility(View.VISIBLE);
+            swiper.setRefreshing(false);
+            Toast.makeText(this, "Connect to a network!" , Toast.LENGTH_SHORT).show();
+        }else {
+            doDownload(degreeFarenheit , city);
+            linearInternet.setVisibility(View.VISIBLE);
+            linearNoInternet.setVisibility(View.GONE);
+            swiper.setRefreshing(false);
+            Toast.makeText(this, "Network Connected!" , Toast.LENGTH_SHORT).show();
+        }
+
 
 
     }
 
 
 
-    public void seconActivity(View view){
-        Intent intent = new Intent(this, DayWeatherActivity.class);
-
-        startActivity(intent);
-    }
 
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void doDownload(boolean degreeFarenheit , String city){
 
-        WeatherDownloader.HomedownloadWeather(this , city , degreeFarenheit);
+
+        if (hasNetworkConnection()){
+            WeatherDownloader.HomedownloadWeather(this , city , degreeFarenheit);
+        }
+
 //        WeatherDownloader.DaydownloadWeather(dayWeatherActivity.class ,
 //                degreeFarenheit);
+    }
+
+    public void saveData() {
+        SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+        editor.putBoolean("FAHRENHEIT", degreeFarenheit);
+        editor.putString("city", city);
+        editor.apply();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void doRefresh(){
+
+     if (!hasNetworkConnection()){
+
+         linearInternet.setVisibility(View.VISIBLE);
+         linearNoInternet.setVisibility(View.GONE);
+         swiper.setRefreshing(false);
+     }else{
+         doDownload(degreeFarenheit , city);
+
+     }
+     swiper.setRefreshing(false);
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void updateData(Weather weather) {
+
 
         if (weather == null) {
             Toast.makeText(this, "Please Enter a Valid City Name", Toast.LENGTH_SHORT).show();
@@ -130,14 +187,29 @@ public class MainActivity extends AppCompatActivity {
         TextView noonTempId = findViewById(R.id.noonTempId);
         TextView eveTempId = findViewById(R.id.eveTempId);
         TextView nightTempId = findViewById(R.id.nightTempId);
+        TextView visibilityId = findViewById(R.id.txtVisibility);
 
         TextView textSunRiseId = findViewById(R.id.txtSunrise);
         TextView textSunSetId = findViewById(R.id.txtSunset);
+        ImageView currentWeatherImgId = findViewById(R.id.currentWeatherImg);
+
+        int iconID = returnIcon(weather.getIcon());
+        if (iconID != 0) {
+            currentWeatherImgId.setImageResource(iconID);
+
+        }else{
+            Log.d(TAG, "Cant find the Image COde");
+        }
 
 
-
+        visibilityId.setText("Visibility: " + weather.getVisibility() + "%");
 
         String windParams = weather.getWindir() + weather.getWindspeed() + weather.getWindgust();
+
+
+        String windDir = getDirection(Double.parseDouble(weather.getWindir()));
+        windPatterns.setText("Winds: " + windDir + " at " + weather.getWindspeed() + "mph gusting to " + weather.getWindgust() + "mph");
+
         String condCloud = weather.getConditions() + "(" + weather.getCloudcover() + "% clouds" + ")";
 
         String morningTemp = returnTemperature(currentDayJsonObj, 8);
@@ -150,15 +222,17 @@ public class MainActivity extends AppCompatActivity {
 
         temp.setText(String.format("%s° %s", weather.getTemp(), degreeFarenheit ? "F" : "C"));
 
-        uvIndex.setText(weather.getUvindex());
-        humidity.setText(weather.getHumidity());
-        windPatterns.setText(windParams);
+        uvIndex.setText(String.format("UV Index %s", weather.getUvindex()));
+        humidity.setText(String.format("Humidity: %s", weather.getHumidity()));
+
         currentCloud.setText(condCloud);
 
+        feelsLike.setText((String.format("Feels like: %s° %s", weather.getFeelslike(), degreeFarenheit ? "F" : "C")));
         morningTempId.setText((String.format("%s° %s", morningTemp, degreeFarenheit ? "F" : "C")));
         noonTempId.setText((String.format("%s° %s", noonTemp, degreeFarenheit ? "F" : "C")));
         eveTempId.setText((String.format("%s° %s", eveTemp, degreeFarenheit ? "F" : "C")));
         nightTempId.setText((String.format("%s° %s", nightTemp, degreeFarenheit ? "F" : "C")));
+
 
 
        String sunRiseText = dateTimeConvertor(weather.getSunriseEpoch() , "timeOnly");
@@ -218,7 +292,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                     HourlyWeatherAdapter hourlyWeatherAdapter = new HourlyWeatherAdapter(hourlyWeatherArrayList, this);
-                    updateList(hourlyWeatherArrayList);
                     //Log.d(TAG , "Value from the ArrayList: " + updatedObj.getTemp());
 
                     //Log.d(TAG , "Notify");
@@ -268,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
 
             return timeOnly.format(dateTime);
         }else if (choice == "dayDate"){
+
             SimpleDateFormat dayDate = new SimpleDateFormat("EEEE MM/dd", Locale.getDefault());
             return dayDate.format(dateTime);
         }
@@ -275,12 +349,6 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    public void updateList(ArrayList<HourlyWeather> hourlyWeatherArrayList){
-        if(hourlyWeatherAdapter != null) {
-            horizontalRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL,false));
-            horizontalRecyclerView.setAdapter(hourlyWeatherAdapter);
-        }
-    }
 
 
     public String returnTemperature(JSONObject dayJsonObj , int pos){
@@ -312,7 +380,12 @@ public class MainActivity extends AppCompatActivity {
             item.setIcon(ContextCompat.getDrawable(this, R.drawable.units_c));
         }
         return true;
+
+
     }
+
+
+
 
 
 //    public void checkNetwork(){
@@ -325,8 +398,6 @@ public class MainActivity extends AppCompatActivity {
 //            linearNoInternet.setVisibility(View.VISIBLE);
 //        }
 //    }
-
-
 
     private boolean hasNetworkConnection() {
         ConnectivityManager connectivityManager = getSystemService(ConnectivityManager.class);
@@ -360,9 +431,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public int returnIcon(String icon){
+
+        icon = icon.replace("-" , "_");
+        int iconId = MainActivity.this.getResources().getIdentifier(icon , "drawable" , MainActivity.this.getPackageName());
+
+        // Error Handling
+        if (iconId ==0){
+            Log.d(TAG , "parseCurrentRecord: CANNOT FIND ICON" + icon);
+            return 0;
+        }
+        return iconId;
+    }
+
+    private void getData() {
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        degreeFarenheit = prefs.getBoolean("FAHRENHEIT", true);
+        city = prefs.getString("city", "Chicago, Illinois");
+
+        Objects.requireNonNull(getSupportActionBar()).setTitle("" + city);
+    }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
+
+
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.dailyMenu) {
@@ -372,29 +467,19 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("city" , city);
             intent.putExtra("degree" , degreeFarenheit);
             startActivity(intent);
-//            if(hasNetworkConnection()) {
-//                Intent intent = new Intent(this, DayWeatherActivity.class);
-//                intent.putExtra("dailyData", jsonData);
-//                intent.putExtra("farenheit", degreeFarenheit);
-//                intent.putExtra("location", txtLocation.getText().toString());
-//                startActivity(intent);
-//            }
-//            else{
-//                Toast.makeText(getApplicationContext(),"This function requires devices to be connected to the internet",Toast.LENGTH_LONG).show();
-//            }
             return true;
 
         }
         else if (item.getItemId() == R.id.unitsMenu) {
             Intent data = new Intent(this, DayWeatherActivity.class);
             if (degreeFarenheit){ // its True here
-                Toast.makeText(this, "Degree Farhenheit" + degreeFarenheit , Toast.LENGTH_SHORT);
+                Toast.makeText(this, "Degree Farhenheit" + degreeFarenheit , Toast.LENGTH_SHORT).show();
                 degreeFarenheit = false;
 
                 data.putExtra("degreeFarenheit" , degreeFarenheit);
                 item.setIcon(ContextCompat.getDrawable(this, R.drawable.units_c));
                 doDownload(degreeFarenheit, city);
-
+                saveData();
                 Toast.makeText(this, "The degree: " + degreeFarenheit , Toast.LENGTH_SHORT).show();
 
             }else{
@@ -403,6 +488,7 @@ public class MainActivity extends AppCompatActivity {
                 data.putExtra("degreeFarenheit" , degreeFarenheit);
                 item.setIcon(ContextCompat.getDrawable(this, R.drawable.units_f));
                 doDownload(degreeFarenheit , city);
+                saveData();
                 Toast.makeText(this, "The degree: " + degreeFarenheit , Toast.LENGTH_SHORT).show();
 
             }
@@ -451,6 +537,9 @@ public class MainActivity extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 
 }
 

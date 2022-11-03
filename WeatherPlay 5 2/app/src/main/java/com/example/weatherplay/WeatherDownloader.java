@@ -1,6 +1,7 @@
 package com.example.weatherplay;
 
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -53,11 +54,14 @@ public class WeatherDownloader {
                 response -> {
                     parseJSON(response.toString());
                         mainActivity.updateData(weatherObj);
+                    Log.d(TAG , "Response is called");
 
         };
 
         Response.ErrorListener error =
-                error1 -> Toast.makeText(mainActivity, "Error is provoked", Toast.LENGTH_SHORT).show();
+                error1 -> {Toast.makeText(mainActivity, "Error is provoked", Toast.LENGTH_SHORT).show();
+        Log.d(TAG , "Response is not getting called");
+        };
 
         JsonObjectRequest jsonObjectRequest =
                 new JsonObjectRequest(Request.Method.GET, urlBuild,

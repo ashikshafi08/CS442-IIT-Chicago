@@ -4,8 +4,7 @@ import java.io.Serializable;
 
 public class DayWeather implements Serializable {
 
-    private final String tempMax;
-    private final String tempMin;
+    private final String txtHighLow;
     private final String datetimeEpoch;
     private final String description;
     private final String precipprob;
@@ -17,12 +16,11 @@ public class DayWeather implements Serializable {
     private final String icon;
 
 
-    public DayWeather(String tempMax, String tempMin,  String description, String datetimeEpoch,
+    public DayWeather(String txtHighLow,  String description, String datetimeEpoch,
                       String precipprob, String uvindex, String icon ,
                       String morningTemp , String noonTemp , String eveTemp , String nightTemp) {
-        this.tempMax = tempMax;
         this.description = description;
-        this.tempMin = tempMin;
+        this.txtHighLow = txtHighLow;
         this.datetimeEpoch = datetimeEpoch;
         this.precipprob = precipprob;
         this.uvindex = uvindex;
@@ -34,16 +32,14 @@ public class DayWeather implements Serializable {
     }
 
 
-    public String getTempMax() {
-        return tempMax;
-    }
+
 
     public String getDescription() {
         return description;
     }
 
-    public String getTempMin() {
-        return tempMin;
+    public String getTxtHighLow() {
+        return txtHighLow;
     }
 
     public String getDatetimeEpoch() {
