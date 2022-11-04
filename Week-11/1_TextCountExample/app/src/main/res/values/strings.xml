@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Text Counting Example</string>
+    <string name="go_to_second_activity">Go to Second Activity</string>
+    <string name="enter_some_text">Enter some text...</string>
+    <string name="tap_the_home_indicator_in_the_upper_left">Tap the Home indicator in the upper-left</string>
+</resources>

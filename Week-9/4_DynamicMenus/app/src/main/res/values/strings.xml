@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DynamicMenus</string>
+    <string name="enter_number_of_menu_items">Enter number of menu items</string>
+    <string name="_5">5</string>
+    <string name="rebuild_menu">Rebuild Menu</string>
+    <string name="enter_number_of_submenu_items">Enter number of submenu items</string>
+</resources>

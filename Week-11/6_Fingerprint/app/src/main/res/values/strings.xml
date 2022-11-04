@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Fingerprint</string>
+    <string name="no_sec">Lock screen security not enabled in Settings</string>
+    <string name="go_lock">Go to Screen Lock Settings</string>
+    <string name="finger_none">There are no fingerprints enrolled on this device.</string>
+    <string name="finger_cxl">Fingerprint authentication cancelled</string>
+    <string name="finger_ok">Fingerprint recognized successfully</string>
+    <string name="finger_bad">Fingerprint not recognized</string>
+    <string name="lockscreen_not_enabled">Cannot use fingerprints - Lock screen security not enabled in Settings</string>
+    <string name="fingerprint_icon">Fingerprint Icon</string>
+    <string name="tap_msg">Tap icon to show dialog:</string>
+    <string name="go_to_security_settings">Go To Security Settings</string>
+    <string name="unspec_error">Unspecified Biometric Error</string>
+    <string name="no_hw">Biometric features are currently unavailable.</string>
+    <string name="bio_unavail">Biometric features are currently unavailable.</string>
+</resources>

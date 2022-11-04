@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ViewBinding</string>
+    <string name="enter_some_text">Enter some text…</string>
+    <string name="reverse">Go!</string>
+</resources>

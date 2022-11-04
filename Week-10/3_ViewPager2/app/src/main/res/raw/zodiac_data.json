@@ -1,0 +1,64 @@
+[
+  {
+    "symbol": "♒",
+    "name": "aquarius",
+    "dates": "January 20–February 18"
+  },
+  {
+    "symbol": "♓",
+    "name": "pisces",
+    "dates": "February 19–March 20"
+  },
+  {
+    "symbol": "♈",
+    "name": "aries",
+    "dates": "March 21–April 19"
+  },
+  {
+    "symbol": "♉",
+    "name": "taurus",
+    "dates": "April 20–May 20"
+  },
+  {
+    "symbol": "♊",
+    "name": "gemini",
+    "dates": "May 21–June 21"
+  },
+  {
+    "symbol": "♋",
+    "name": "cancer",
+    "dates": "June 22–July 22"
+  },
+  {
+    "symbol": "♌",
+    "name": "leo",
+    "dates": "July 23–August 22"
+  },
+  {
+    "symbol": "♍",
+    "name": "virgo",
+    "dates": "August 23–September 22"
+  },
+  {
+    "symbol": "♎",
+    "name": "libra",
+    "dates": "September 23–October 23"
+  },
+  {
+    "symbol": "♏",
+    "name": "scorpio",
+    "dates": "October 24–November 21"
+  },
+  {
+    "symbol": "♐",
+    "name": "sagittarius",
+    "dates": "November 22–December 21"
+  },
+  {
+    "symbol": "♑",
+    "name": "capricorn",
+    "dates": "December 22–January 19"
+  }
+]
+
+

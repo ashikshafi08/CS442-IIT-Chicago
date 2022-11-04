@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CameraAndGallery</string>
+    <string name="camera_full_image">Camera Full Image</string>
+    <string name="gallery_image">Gallery Image</string>
+    <string name="display_image">Display Image</string>
+    <string name="jpg_convert">JPG Convert</string>
+    <string name="camera_thumbnail">Camera Thumbnail</string>
+</resources>
