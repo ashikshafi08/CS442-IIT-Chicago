@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Other Implied Intents</string>
+    <string name="go_to_microsoft_in_browser">Go to Microsoft in Browser</string>
+    <string name="send_an_email_in_email_app">Send an email in Email App</string>
+    <string name="go_to_aquarium_in_google_maps">Go to Aquarium in Google Maps</string>
+    <string name="go_to_tribune_in_facebook">Go to Tribune in Facebook</string>
+    <string name="make_a_call">Make a Call</string>
+    <string name="go_to_tribune_twitter">Go to Tribune Twitter</string>
+    <string name="go_to_linkedin">Go to LinkedIn</string>
+    <string name="go_to_uber">Go To Uber</string>
+</resources>
