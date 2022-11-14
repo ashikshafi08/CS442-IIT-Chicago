@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Muestra de Idioma</string>
+    <string name="welcome">Bienvenido!</string>
+    <string name="email_address">Dirección Electrónica</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="don_t_have_account_sign_up">No tienes cuenta? Regístrate</string>
+    <string name="password">Contraseña</string>
+    <string name="button_click">¡Gracias!</string>
+</resources>

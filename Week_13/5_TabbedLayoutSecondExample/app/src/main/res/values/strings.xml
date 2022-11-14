@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TabLayoutExample</string>
+    <string name="tap_an_entry_below_to_locate">Tap an entry below to locate</string>
+    <string name="about">About:</string>
+    <string name="enter_name_to_find">Enter name to find</string>
+    <string name="black_x">Black X</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">भाषा का नमूना</string>
+    <string name="welcome">स्वागत हे!</string>
+    <string name="email_address">ईमेल पता</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="don_t_have_account_sign_up">खाता नहीं है? साइन अप करें</string>
+    <string name="password">पारण शब्द</string>
+    <string name="button_click">धन्यवाद!</string>
+</resources>

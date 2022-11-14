@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WeatherWidget</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="sync_symbol">Sync Symbol</string>
+    <string name="weather_icon">Weather Icon</string>
+    <string name="chicago">Chicago</string>
+    <string name="fahrenheit">Fahrenheit</string>
+    <string name="celsius">Celsius</string>
+</resources>

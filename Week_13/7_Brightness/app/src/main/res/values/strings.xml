@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Brightness</string>
+    <string name="brightness">Brightness: </string>
+    <string name="perm_needed">Permission Needed</string>
+    <string name="perm_message">This app needs \'write settings\' permission in order to change the screen brightness.\nTake you to the settings?</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sprachbeispiel</string>
+    <string name="welcome">Willkommen!</string>
+    <string name="email_address">E-Mail Addresse</string>
+    <string name="login">Einloggen</string>
+    <string name="don_t_have_account_sign_up">Hast du kein Konto? Anmelden</string>
+    <string name="password">Passwort</string>
+    <string name="button_click">Vielen Dank!</string>
+</resources>

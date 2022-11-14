@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">言語サンプル</string>
+    <string name="welcome">ようこそ！</string>
+    <string name="email_address">電子メールアドレス</string>
+    <string name="login">ログイン</string>
+    <string name="don_t_have_account_sign_up">アカウントを持っていない？ サインアップ。</string>
+    <string name="password">パスワード</string>
+    <string name="button_click">ありがとうございました！</string>
+</resources>

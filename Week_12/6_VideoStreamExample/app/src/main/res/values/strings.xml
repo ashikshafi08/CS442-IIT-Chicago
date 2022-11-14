@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VideoStreamExample</string>
+    <string name="video_url">https://www.christopherhield.com/port_video/video.mp4</string>
+    <string name="video_url2">https://www.christopherhield.com/video/Rio_Lobo_1970.mp4</string>
+</resources>
