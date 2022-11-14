@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">TestVoteApp</string>
+    <string name="danny_k_davis">Danny K Davis</string>
+    <string name="u_s_representative">U.S Representative</string>
+    <string name="location">LOCATION</string>
+    <string name="democratic_party">(Democratic Party)</string>
+    <string name="officals_photo">Officals Photo</string>
+    <string name="address">Address:</string>
+    <string name="phone">Phone:</string>
+    <string name="addressLine">319 Rayburn House Office Building Washington, DC 20515</string>
+    <string name="phoneLine">(202) 225-5006</string>
+    <string name="website">Website:</string>
+    <string name="emailLine">davisk@mail.house.gov</string>
+    <string name="websiteLine">https://davis.house.gov/</string>
+    <string name="facebookicon">FacebookIcon</string>
+    <string name="twittericon">TwitterIcon</string>
+    <string name="youtubeicon">youtubeIcon</string>
+    <string name="partylogoicon">PartyLogoIcon</string>
+    <string name="email">Email:</string>
+</resources>
