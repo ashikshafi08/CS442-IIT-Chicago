@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Custom Font Example</string>
-    <string name="this_is_a_textview">This is a TextView using a custom font</string>
-    <string name="button">My Button</string>
-    <string name="checkbox">My CheckBox</string>
-    <string name="enter_some_text_here">Enter some text here</string>
-    <string name="change_font">Change Font</string>
-</resources>

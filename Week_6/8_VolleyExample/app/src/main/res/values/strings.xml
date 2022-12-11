@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">VolleyExample</string>
-    <string name="button">Button</string>
-    <string name="city_state_country">City,State,Country</string>
-    <string name="get_data">GET DATA</string>
-    <string name="chicago">Chicago</string>
-    <string name="weather_icon">Weather Icon</string>
-</resources>

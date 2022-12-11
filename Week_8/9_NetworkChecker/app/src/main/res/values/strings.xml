@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">NetworkChecker</string>
-    <string name="check">Check</string>
-    <string name="has_net">HAS Network Connection</string>
-    <string name="no_net">NO Network Connection</string>
-</resources>

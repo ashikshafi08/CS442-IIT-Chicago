@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Eight Ball</string>
-    <string name="app_widget_description">Eight Ball</string>
-
-    <string name="appwidget_text">Click the Eight Ball</string>
-    <string name="add_widget">Add widget</string>
-    <string name="eight_ball_image">Eight Ball Image</string>
-    <string name="close_me">Close me!</string>
-</resources>

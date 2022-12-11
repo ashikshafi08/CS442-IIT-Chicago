@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">SnackBar</string>
-    <string name="make_long_duration_snackbar">Make Long Duration SnackBar</string>
-    <string name="make_snackbar_with_action">Make SnackBar with Action</string>
-    <string name="make_short_duration_snackbar">Make Short Duration SnackBar</string>
-    <string name="make_indefinite_duration_snackbar">Make Indefinite Duration SnackBar</string>
-    <string name="make_snackbar_with_text_colors">Make SnackBar with Text Colors</string>
-</resources>

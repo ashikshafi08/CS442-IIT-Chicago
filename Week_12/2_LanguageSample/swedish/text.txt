@@ -1,9 +1,0 @@
-Swedish
-
-app_name	Språkprov
-welcome		Välkommen!
-email_address	E-postadress
-Login		Logga in
-don_t_have_account_sign_up	Har du inget konto? Bli Medlem
-password	Lösenord
-button_click	Tack!
